@@ -6,6 +6,7 @@ Allows printing structured logs to `stdout`, `stderr` for further action in Goog
 [![Coverage Status](https://coveralls.io/repos/github/igrek8/gc-json-logger/badge.svg?branch=main)](https://coveralls.io/github/igrek8/gc-json-logger?branch=main)
 ![Health](https://badgen.net/github/checks/igrek8/gc-json-logger)
 ![License](https://badgen.net/github/license/igrek8/gc-json-logger)
+[![Runkit](https://badgen.net/badge/runkit/playground/cyan)](https://npm.runkit.com/gc-json-logger)
 
 ## Precaution
 
