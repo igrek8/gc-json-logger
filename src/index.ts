@@ -1,3 +1,4 @@
+export * from './ILogger';
 export * from './Logger';
 export * from './types/HttpRequest';
 export * from './types/LogEntry';

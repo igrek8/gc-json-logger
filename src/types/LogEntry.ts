@@ -42,7 +42,7 @@ export interface LogEntry {
    *
    * Cloud Logging truncates label keys that exceed 512 B and label values that exceed 64 KB upon their associated log entry being written. The truncation is indicated by an ellipsis at the end of the character string.
    */
-  'logging.googleapis.com/labels'?: Record<string, string>;
+  'logging.googleapis.com/labels'?: Record<string, string | undefined>;
 
   /**
    * Log entry fields

@@ -1,6 +1,7 @@
 import assert from 'assert';
 import { createHook, executionAsyncId, executionAsyncResource } from 'async_hooks';
 import { v4 } from 'uuid';
+import { ILogger } from './ILogger';
 
 import { LogEntry } from './types/LogEntry';
 import { LogEntryMetadata } from './types/LogEntryMetadata';
@@ -13,7 +14,7 @@ const state = Symbol();
 
 type Context = Record<symbol, Logger | undefined>;
 
-export class Logger {
+export class Logger implements ILogger {
   /**
    * Global log level
    */
