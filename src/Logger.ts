@@ -43,7 +43,7 @@ export class Logger implements ILogger {
 
   /**
    * Creates a new or returns already initialized logger.
-   * The initial call with a name argument will store that logger with in the context.
+   * The initial call with a name argument will store that logger in the context.
    * Subsequent calls without the `name` argument will result in the same logger instance.
    *
    * ```ts
@@ -89,9 +89,6 @@ export class Logger implements ILogger {
     this.name = name;
   }
 
-  /**
-   * Log an event by specifying severity level
-   */
   public log(severity: Severity, message: string, meta: LogEntryMetadata = {}): void {
     if (severity < Logger.level) {
       return;
@@ -130,47 +127,38 @@ export class Logger implements ILogger {
     process[channel].write(toJSON(entry) + '\n');
   }
 
-  /* The log entry has no assigned severity level. */
   public default(message: string, meta?: LogEntryMetadata): void {
     this.log(Severity.DEFAULT, message, meta);
   }
 
-  /* Debug or trace information. */
   public debug(message: string, meta?: LogEntryMetadata): void {
     this.log(Severity.DEBUG, message, meta);
   }
 
-  /* Routine information, such as ongoing status or performance. */
   public info(message: string, meta?: LogEntryMetadata): void {
     this.log(Severity.INFO, message, meta);
   }
 
-  /* Normal but significant events, such as start up, shut down, or a configuration change. */
   public notice(message: string, meta?: LogEntryMetadata): void {
     this.log(Severity.NOTICE, message, meta);
   }
 
-  /* Warning events might cause problems. */
   public warning(message: string, meta?: LogEntryMetadata): void {
     this.log(Severity.WARNING, message, meta);
   }
 
-  /* Error events are likely to cause problems. */
   public error(message: string, meta?: LogEntryMetadata): void {
     this.log(Severity.ERROR, message, meta);
   }
 
-  /* Critical events cause more severe problems or outages. */
   public critical(message: string, meta?: LogEntryMetadata): void {
     this.log(Severity.CRITICAL, message, meta);
   }
 
-  /* A person must take an action immediately. */
   public alert(message: string, meta?: LogEntryMetadata): void {
     this.log(Severity.ALERT, message, meta);
   }
 
-  /* One or more systems are unusable. */
   public emergency(message: string, meta?: LogEntryMetadata): void {
     this.log(Severity.EMERGENCY, message, meta);
   }
