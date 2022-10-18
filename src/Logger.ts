@@ -14,6 +14,8 @@ const state = Symbol();
 
 type Context = Record<symbol, Logger | undefined>;
 
+const ERROR_EVENT = 'type.googleapis.com/google.devtools.clouderrorreporting.v1beta1.ReportedErrorEvent';
+
 export class Logger implements ILogger {
   /**
    * Global log level
@@ -94,34 +96,30 @@ export class Logger implements ILogger {
       return;
     }
 
-    const { httpRequest, labels, error, ..._meta } = meta;
+    const { labels, error, ...options } = meta;
 
     const level = Severity[severity];
     assert(level, `severity "${severity}" is not supported`);
 
     const entry: LogEntry = {
+      ...options,
       severity: level,
       timestamp: new Date().toISOString(),
       message,
-      error,
     };
 
-    if (httpRequest) {
-      entry.httpRequest = meta.httpRequest;
-    }
-
-    if (error instanceof Error && error.stack) {
+    if (error?.stack) {
       /**
        * https://cloud.google.com/error-reporting/docs/formatting-error-messages
        * https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.events/report
        */
+      if (severity >= Severity.ERROR) entry['@type'] = ERROR_EVENT;
       entry['message'] = error.stack;
-      _meta['message'] = message;
+      entry['details'] = message;
     }
 
     entry['logging.googleapis.com/operation'] = { id: this.name };
     entry['logging.googleapis.com/labels'] = labels;
-    entry['meta'] = Object.keys(_meta).length ? _meta : undefined;
 
     const channel = severity >= Severity.ERROR ? 'stderr' : 'stdout';
     process[channel].write(toJSON(entry) + '\n');

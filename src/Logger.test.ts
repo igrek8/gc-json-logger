@@ -170,7 +170,7 @@ describe('Logger', () => {
     expect(Logger.getLogger('app')).toBe(logger);
   });
 
-  it('logs error', () => {
+  it('reports error', () => {
     const stderr = jest.spyOn(process.stderr, 'write');
     stderr.mockImplementation(() => true);
     mockFunction(v4).mockReturnValue('uuid');
@@ -183,8 +183,8 @@ describe('Logger', () => {
       ...options,
       severity: 'ERROR',
       message: 'Error: test',
-      error,
-      meta: { message: 'test' },
+      '@type': 'type.googleapis.com/google.devtools.clouderrorreporting.v1beta1.ReportedErrorEvent',
+      details: 'test',
     });
   });
 
