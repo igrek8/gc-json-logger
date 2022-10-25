@@ -16,7 +16,7 @@ jest.setSystemTime(0);
 describe('Logger', () => {
   const options: LogEntry = {
     severity: 'INFO',
-    timestamp: '1970-01-01T00:00:00.000Z',
+    time: '1970-01-01T00:00:00.000Z',
     message: 'test',
     'logging.googleapis.com/operation': {
       id: 'uuid',
@@ -152,9 +152,9 @@ describe('Logger', () => {
     mockFunction(toJSON).mockReturnValue('{}');
     Logger.setLevel(Severity.INFO);
     Logger.getLogger().info('test');
-    Logger.getLogger('global').info('test');
-    expect(toJSON).toHaveBeenCalledWith({ ...options, 'logging.googleapis.com/operation': { id: 'app' } });
-    expect(toJSON).toHaveBeenCalledWith({ ...options, 'logging.googleapis.com/operation': { id: 'global' } });
+    Logger.getLogger('Module').info('test');
+    expect(toJSON).toHaveBeenCalledWith({ ...options, 'logging.googleapis.com/operation': { id: 'Application' } });
+    expect(toJSON).toHaveBeenCalledWith({ ...options, 'logging.googleapis.com/operation': { id: 'Module' } });
   });
 
   it('stores first custom logger', () => {
@@ -167,10 +167,10 @@ describe('Logger', () => {
     mockFunction(executionAsyncId).mockReturnValue(1);
     const logger = Logger.getLogger();
     expect(Logger.getLogger()).toBe(logger);
-    expect(Logger.getLogger('app')).toBe(logger);
+    expect(Logger.getLogger('Application')).toBe(logger);
   });
 
-  it('reports error', () => {
+  it('reports error stack', () => {
     const stderr = jest.spyOn(process.stderr, 'write');
     stderr.mockImplementation(() => true);
     mockFunction(v4).mockReturnValue('uuid');
@@ -178,13 +178,31 @@ describe('Logger', () => {
     const error = new Error('test');
     error.stack = 'Error: test';
     Logger.setLevel(Severity.DEFAULT);
-    Logger.getLogger().error('test', { error });
+    Logger.getLogger().error('message', { error });
     expect(toJSON).toHaveBeenCalledWith({
       ...options,
       severity: 'ERROR',
       message: 'Error: test',
       '@type': 'type.googleapis.com/google.devtools.clouderrorreporting.v1beta1.ReportedErrorEvent',
-      details: 'test',
+      details: 'message',
+    });
+  });
+
+  it('fallbacks to error message', () => {
+    const stderr = jest.spyOn(process.stderr, 'write');
+    stderr.mockImplementation(() => true);
+    mockFunction(v4).mockReturnValue('uuid');
+    mockFunction(toJSON).mockReturnValue('{}');
+    const error = new Error('test');
+    delete error.stack;
+    Logger.setLevel(Severity.DEFAULT);
+    Logger.getLogger().error('message', { error });
+    expect(toJSON).toHaveBeenCalledWith({
+      ...options,
+      severity: 'ERROR',
+      message: 'test',
+      '@type': 'type.googleapis.com/google.devtools.clouderrorreporting.v1beta1.ReportedErrorEvent',
+      details: 'message',
     });
   });
 

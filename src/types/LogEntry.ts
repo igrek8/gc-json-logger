@@ -21,7 +21,7 @@ export interface LogEntry {
    *
    * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
    */
-  timestamp: string;
+  time: string;
 
   /**
    * A common proto for logging HTTP requests. Only contains semantics defined by the HTTP specification. Product-specific logging information MUST be defined in a separate message.
@@ -43,6 +43,13 @@ export interface LogEntry {
    * Cloud Logging truncates label keys that exceed 512 B and label values that exceed 64 KB upon their associated log entry being written. The truncation is indicated by an ellipsis at the end of the character string.
    */
   'logging.googleapis.com/labels'?: Record<string, string | undefined>;
+
+  /**
+   * If log entry contains a field with an `@type` specifier, and the value for that specifier is `type.googleapis.com/google.devtools.clouderrorreporting.v1beta1.ReportedErrorEvent`, then Error Reporting evaluates the log entry as though all required fields are present and captures the error event.
+   *
+   * @see https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.events/report
+   */
+  '@type'?: 'type.googleapis.com/google.devtools.clouderrorreporting.v1beta1.ReportedErrorEvent';
 
   /**
    * Log entry fields

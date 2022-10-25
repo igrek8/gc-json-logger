@@ -49,11 +49,11 @@ export class Logger implements ILogger {
    * Subsequent calls without the `name` argument will result in the same logger instance.
    *
    * ```ts
-   * const app = Logger.getLogger('app');
+   * const app = Logger.getLogger('Application');
    *
-   * app.info('main'); // Logs as "app"
-   * Logger.getLogger().info('main'); // Logs as "app"
-   * Logger.getLogger('app').info('main'); // Logs as "app"
+   * app.info('main'); // Logs as "Application"
+   * Logger.getLogger().info('main'); // Logs as "Application"
+   * Logger.getLogger('Application').info('main'); // Logs as "Application"
    *
    * setTimeout(() => {
    *   const id = "abc";
@@ -69,7 +69,7 @@ export class Logger implements ILogger {
    */
   public static getLogger(name?: string): Logger {
     if (executionAsyncId() === init) {
-      const logger = this.appLogger ?? new Logger(name ?? 'app');
+      const logger = this.appLogger ?? new Logger(name ?? 'Application');
       this.appLogger ??= logger; /* Store initial app logger */
       if (name && logger.name !== name) return new Logger(name);
       return logger;
@@ -96,6 +96,8 @@ export class Logger implements ILogger {
       return;
     }
 
+    const time = new Date().toISOString();
+
     const { labels, error, ...options } = meta;
 
     const level = Severity[severity];
@@ -104,17 +106,17 @@ export class Logger implements ILogger {
     const entry: LogEntry = {
       ...options,
       severity: level,
-      timestamp: new Date().toISOString(),
+      time,
       message,
     };
 
-    if (error?.stack) {
+    if (error) {
       /**
        * https://cloud.google.com/error-reporting/docs/formatting-error-messages
        * https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.events/report
        */
       if (severity >= Severity.ERROR) entry['@type'] = ERROR_EVENT;
-      entry['message'] = error.stack;
+      entry['message'] = error.stack ?? error.message;
       entry['details'] = message;
     }
 
