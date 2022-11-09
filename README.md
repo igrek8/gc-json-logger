@@ -3,7 +3,7 @@
 Allows printing structured logs to `stdout`, `stderr` for further action in Google Cloud platform. Given that log agent ingests logs from `stdout` streams when running in GKE.
 
 [![NPM](https://badgen.net/npm/v/gc-json-logger)](https://www.npmjs.com/gc-json-logger)
-[![Coverage Status](https://coveralls.io/repos/github/igrek8/gc-json-logger/badge.svg?branch=main)](https://coveralls.io/github/igrek8/gc-json-logger?branch=main)
+[![Coverage](https://codecov.io/gh/igrek8/gc-json-logger/branch/main/graph/badge.svg)](https://codecov.io/gh/igrek8/gc-json-logger)
 ![Health](https://badgen.net/github/checks/igrek8/gc-json-logger)
 ![License](https://badgen.net/github/license/igrek8/gc-json-logger)
 [![Runkit](https://badgen.net/badge/runkit/playground/cyan)](https://npm.runkit.com/gc-json-logger)
@@ -22,7 +22,7 @@ yarn add gc-json-logger
 
 ## View in Google Cloud Logging
 
-![Google Cloud Logging](./docs/images/google-cloud-logging.png)
+![Google Cloud Logging](./media/google-cloud-logging.png)
 
 ## Integration
 

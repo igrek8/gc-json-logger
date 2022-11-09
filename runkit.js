@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 const { Logger } = require('gc-json-logger');
 
 const app = Logger.getLogger('app');

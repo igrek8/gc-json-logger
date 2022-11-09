@@ -1,4 +1,4 @@
-import assert from 'assert';
+import * as assert from 'assert';
 import { createHook, executionAsyncId, executionAsyncResource } from 'async_hooks';
 import { v4 } from 'uuid';
 import { ILogger } from './ILogger';
