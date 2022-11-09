@@ -32,7 +32,7 @@ The number of HTTP response bytes inserted into cache. Set only when a cache fil
 
 #### Defined in
 
-[types/HttpRequest.ts:32](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/types/HttpRequest.ts#L32)
+[types/HttpRequest.ts:32](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/types/HttpRequest.ts#L32)
 
 ___
 
@@ -44,7 +44,7 @@ Whether or not an entity was served from cache (with or without validation).
 
 #### Defined in
 
-[types/HttpRequest.ts:28](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/types/HttpRequest.ts#L28)
+[types/HttpRequest.ts:28](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/types/HttpRequest.ts#L28)
 
 ___
 
@@ -56,7 +56,7 @@ Whether or not a cache lookup was attempted.
 
 #### Defined in
 
-[types/HttpRequest.ts:26](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/types/HttpRequest.ts#L26)
+[types/HttpRequest.ts:26](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/types/HttpRequest.ts#L26)
 
 ___
 
@@ -68,7 +68,7 @@ Whether or not the response was validated with the origin server before being se
 
 #### Defined in
 
-[types/HttpRequest.ts:30](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/types/HttpRequest.ts#L30)
+[types/HttpRequest.ts:30](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/types/HttpRequest.ts#L30)
 
 ___
 
@@ -81,7 +81,7 @@ A duration in seconds with up to nine fractional digits, ending with 's'. Exampl
 
 #### Defined in
 
-[types/HttpRequest.ts:24](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/types/HttpRequest.ts#L24)
+[types/HttpRequest.ts:24](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/types/HttpRequest.ts#L24)
 
 ___
 
@@ -93,7 +93,7 @@ Protocol used for the request. Examples: "HTTP/1.1", "HTTP/2", "websocket"
 
 #### Defined in
 
-[types/HttpRequest.ts:34](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/types/HttpRequest.ts#L34)
+[types/HttpRequest.ts:34](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/types/HttpRequest.ts#L34)
 
 ___
 
@@ -105,7 +105,7 @@ The referer URL of the request, as defined in HTTP/1.1 Header Field Definitions.
 
 #### Defined in
 
-[types/HttpRequest.ts:19](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/types/HttpRequest.ts#L19)
+[types/HttpRequest.ts:19](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/types/HttpRequest.ts#L19)
 
 ___
 
@@ -117,7 +117,7 @@ The IP address (IPv4 or IPv6) of the client that issued the HTTP request. This f
 
 #### Defined in
 
-[types/HttpRequest.ts:15](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/types/HttpRequest.ts#L15)
+[types/HttpRequest.ts:15](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/types/HttpRequest.ts#L15)
 
 ___
 
@@ -129,7 +129,7 @@ The request method. Examples: "GET", "HEAD", "PUT", "POST".
 
 #### Defined in
 
-[types/HttpRequest.ts:3](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/types/HttpRequest.ts#L3)
+[types/HttpRequest.ts:3](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/types/HttpRequest.ts#L3)
 
 ___
 
@@ -141,7 +141,7 @@ The size of the HTTP request message in bytes, including the request headers and
 
 #### Defined in
 
-[types/HttpRequest.ts:7](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/types/HttpRequest.ts#L7)
+[types/HttpRequest.ts:7](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/types/HttpRequest.ts#L7)
 
 ___
 
@@ -153,7 +153,7 @@ The scheme (http, https), the host name, the path and the query portion of the U
 
 #### Defined in
 
-[types/HttpRequest.ts:5](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/types/HttpRequest.ts#L5)
+[types/HttpRequest.ts:5](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/types/HttpRequest.ts#L5)
 
 ___
 
@@ -165,7 +165,7 @@ The size of the HTTP response message sent back to the client, in bytes, includi
 
 #### Defined in
 
-[types/HttpRequest.ts:11](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/types/HttpRequest.ts#L11)
+[types/HttpRequest.ts:11](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/types/HttpRequest.ts#L11)
 
 ___
 
@@ -177,7 +177,7 @@ The IP address (IPv4 or IPv6) of the origin server that the request was sent to.
 
 #### Defined in
 
-[types/HttpRequest.ts:17](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/types/HttpRequest.ts#L17)
+[types/HttpRequest.ts:17](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/types/HttpRequest.ts#L17)
 
 ___
 
@@ -189,7 +189,7 @@ The response code indicating the status of response. Examples: 200, 404.
 
 #### Defined in
 
-[types/HttpRequest.ts:9](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/types/HttpRequest.ts#L9)
+[types/HttpRequest.ts:9](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/types/HttpRequest.ts#L9)
 
 ___
 
@@ -201,4 +201,4 @@ The user agent sent by the client. Example: "Mozilla/4.0 (compatible; MSIE 6.0; 
 
 #### Defined in
 
-[types/HttpRequest.ts:13](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/types/HttpRequest.ts#L13)
+[types/HttpRequest.ts:13](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/types/HttpRequest.ts#L13)

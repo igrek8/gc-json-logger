@@ -48,7 +48,7 @@ A person must take an action immediately.
 
 #### Defined in
 
-[Logger.ts:158](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/Logger.ts#L158)
+[Logger.ts:158](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L158)
 
 ___
 
@@ -75,7 +75,7 @@ Critical events cause more severe problems or outages.
 
 #### Defined in
 
-[Logger.ts:154](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/Logger.ts#L154)
+[Logger.ts:154](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L154)
 
 ___
 
@@ -102,7 +102,7 @@ Debug or trace information.
 
 #### Defined in
 
-[Logger.ts:134](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/Logger.ts#L134)
+[Logger.ts:134](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L134)
 
 ___
 
@@ -129,7 +129,7 @@ The log entry has no assigned severity level.
 
 #### Defined in
 
-[Logger.ts:130](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/Logger.ts#L130)
+[Logger.ts:130](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L130)
 
 ___
 
@@ -156,7 +156,7 @@ One or more systems are unusable.
 
 #### Defined in
 
-[Logger.ts:162](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/Logger.ts#L162)
+[Logger.ts:162](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L162)
 
 ___
 
@@ -183,7 +183,7 @@ Error events are likely to cause problems.
 
 #### Defined in
 
-[Logger.ts:150](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/Logger.ts#L150)
+[Logger.ts:150](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L150)
 
 ___
 
@@ -226,7 +226,7 @@ setTimeout(() => {
 
 #### Defined in
 
-[Logger.ts:70](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/Logger.ts#L70)
+[Logger.ts:70](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L70)
 
 ___
 
@@ -253,7 +253,7 @@ Routine information, such as ongoing status or performance.
 
 #### Defined in
 
-[Logger.ts:138](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/Logger.ts#L138)
+[Logger.ts:138](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L138)
 
 ___
 
@@ -281,7 +281,7 @@ Log an event by specifying severity level
 
 #### Defined in
 
-[Logger.ts:94](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/Logger.ts#L94)
+[Logger.ts:94](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L94)
 
 ___
 
@@ -308,7 +308,7 @@ Normal but significant events, such as start up, shut down, or a configuration c
 
 #### Defined in
 
-[Logger.ts:142](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/Logger.ts#L142)
+[Logger.ts:142](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L142)
 
 ___
 
@@ -330,7 +330,7 @@ Sets a global log level
 
 #### Defined in
 
-[Logger.ts:42](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/Logger.ts#L42)
+[Logger.ts:42](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L42)
 
 ___
 
@@ -357,4 +357,4 @@ Warning events might cause problems.
 
 #### Defined in
 
-[Logger.ts:146](https://github.com/igrek8/gc-json-logger/blob/1158b09/src/Logger.ts#L146)
+[Logger.ts:146](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L146)
