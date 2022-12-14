@@ -1,14 +1,12 @@
 import * as assert from 'assert';
-import { createHook, executionAsyncId, executionAsyncResource } from 'async_hooks';
+import { createHook, executionAsyncResource } from 'async_hooks';
 import { v4 } from 'uuid';
-import { ILogger } from './ILogger';
 
+import { ILogger } from './ILogger';
 import { LogEntry } from './types/LogEntry';
 import { LogEntryMetadata } from './types/LogEntryMetadata';
 import { Severity } from './types/Severity';
 import { toJSON } from './utils/toJSON';
-
-const init = 1;
 
 const state = Symbol();
 
@@ -23,15 +21,23 @@ export class Logger implements ILogger {
   protected static level = Severity.INFO;
 
   /**
-   * Global context logger
+   * Default context logger
    */
-  protected static appLogger: Logger;
+  protected static appLogger: Logger = new Logger('Application');
 
+  /**
+   * Listen to async resource lifecycle
+   */
   static {
     createHook({
-      init: (_asyncId, _type, _triggerAsyncId, resource: Context): void => {
+      init: (_asyncId, _type, _triggerAsyncId, child: Context): void => {
         const parent = executionAsyncResource() as Context;
-        if (parent) resource[state] = parent[state];
+        if (parent) {
+          /**
+           * Propagate context from parent to child
+           */
+          child[state] = parent[state];
+        }
       },
     }).enable();
   }
@@ -44,42 +50,22 @@ export class Logger implements ILogger {
   }
 
   /**
-   * Creates a new or returns already initialized logger.
-   * The initial call with a name argument will store that logger in the context.
-   * Subsequent calls without the `name` argument will result in the same logger instance.
-   *
-   * ```ts
-   * const app = Logger.getLogger('Application');
-   *
-   * app.info('main'); // Logs as "Application"
-   * Logger.getLogger().info('main'); // Logs as "Application"
-   * Logger.getLogger('Application').info('main'); // Logs as "Application"
-   *
-   * setTimeout(() => {
-   *   const id = "abc";
-   *   const logger = Logger.getLogger(id);
-   *   logger.info('context'); // Logs as "id"
-   *   Logger.getLogger().info('context'); // Logs as "id"
-   *   Logger.getLogger(id).info('context'); // Logs as "id"
-   *
-   *   const custom = Logger.getLogger('custom');
-   *   custom.info('context'); // Logs as "custom"
-   * });
-   * ```
+   * Sets logger to async context
+   * @param logger
+   * @returns
    */
-  public static getLogger(name?: string): Logger {
-    if (executionAsyncId() === init) {
-      const logger = this.appLogger ?? new Logger(name ?? 'Application');
-      this.appLogger ??= logger; /* Store initial app logger */
-      if (name && logger.name !== name) return new Logger(name);
-      return logger;
-    } else {
-      const ctx = executionAsyncResource() as Context;
-      const logger = ctx[state] ?? new Logger(name);
-      ctx[state] ??= logger; /* Store initial logger */
-      if (name && logger.name !== name) return new Logger(name);
-      return logger;
-    }
+  public static setLogger(logger: Logger): void {
+    const ctx = executionAsyncResource() as Context;
+    ctx[state] = logger;
+  }
+
+  /**
+   * Returns logger from async context
+   * @returns
+   */
+  public static getLogger(): Logger {
+    const ctx = executionAsyncResource() as Context;
+    return ctx[state] ?? this.appLogger;
   }
 
   /**
@@ -87,7 +73,7 @@ export class Logger implements ILogger {
    */
   protected readonly name: string;
 
-  protected constructor(name: string = v4()) {
+  public constructor(name: string = v4()) {
     this.name = name;
   }
 
@@ -111,13 +97,27 @@ export class Logger implements ILogger {
     };
 
     if (error) {
+      if (severity >= Severity.ERROR) {
+        /**
+         * Mark as error event
+         *
+         * https://cloud.google.com/error-reporting/docs/formatting-error-messages
+         * https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.events/report
+         */
+        entry['@type'] = ERROR_EVENT;
+      }
+
+      if (message !== error.message) {
+        /**
+         * Capture extra details
+         */
+        entry['reason'] = message;
+      }
+
       /**
-       * https://cloud.google.com/error-reporting/docs/formatting-error-messages
-       * https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.events/report
+       * Capture error
        */
-      if (severity >= Severity.ERROR) entry['@type'] = ERROR_EVENT;
       entry['message'] = error.stack ?? error.message;
-      entry['details'] = message;
     }
 
     entry['logging.googleapis.com/operation'] = { id: this.name };
@@ -161,5 +161,45 @@ export class Logger implements ILogger {
 
   public emergency(message: string, meta?: LogEntryMetadata): void {
     this.log(Severity.EMERGENCY, message, meta);
+  }
+
+  public static log(severity: Severity, message: string, meta?: LogEntryMetadata): void {
+    Logger.getLogger().log(severity, message, meta);
+  }
+
+  public static default(message: string, meta?: LogEntryMetadata): void {
+    this.getLogger().default(message, meta);
+  }
+
+  public static debug(message: string, meta?: LogEntryMetadata): void {
+    this.getLogger().debug(message, meta);
+  }
+
+  public static info(message: string, meta?: LogEntryMetadata): void {
+    this.getLogger().info(message, meta);
+  }
+
+  public static notice(message: string, meta?: LogEntryMetadata): void {
+    this.getLogger().notice(message, meta);
+  }
+
+  public static warning(message: string, meta?: LogEntryMetadata): void {
+    this.getLogger().warning(message, meta);
+  }
+
+  public static error(message: string, meta?: LogEntryMetadata): void {
+    this.getLogger().error(message, meta);
+  }
+
+  public static critical(message: string, meta?: LogEntryMetadata): void {
+    this.getLogger().critical(message, meta);
+  }
+
+  public static alert(message: string, meta?: LogEntryMetadata): void {
+    this.getLogger().alert(message, meta);
+  }
+
+  public static emergency(message: string, meta?: LogEntryMetadata): void {
+    this.getLogger().emergency(message, meta);
   }
 }
