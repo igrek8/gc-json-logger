@@ -1,8 +1,8 @@
 gc-json-logger / [Exports](modules.md)
 
-# Logger to enable [structured logging](https://cloud.google.com/logging/docs/structured-logging) in GKE powered projects
+# Async Context [Structured Logger](https://cloud.google.com/logging/docs/structured-logging) for GCP projects
 
-Allows printing structured logs to `stdout`, `stderr` for further action in Google Cloud platform. Given that log agent ingests logs from `stdout` streams when running in GKE.
+Allows printing logs to `stdout`, `stderr` for further action in Google Cloud platform. Given that log agent ingests logs from `stdout` streams when running in GKE.
 
 [![NPM](https://badgen.net/npm/v/gc-json-logger)](https://www.npmjs.com/gc-json-logger)
 [![Coverage](https://codecov.io/gh/igrek8/gc-json-logger/branch/main/graph/badge.svg)](https://codecov.io/gh/igrek8/gc-json-logger)
@@ -30,21 +30,74 @@ yarn add gc-json-logger
 
 ```ts
 const { Logger } = require('gc-json-logger');
+const { createServer } = require('http');
 
-const app = Logger.getLogger('app');
+let job = 0;
 
-app.info('main'); // Logs as "app"
-Logger.getLogger().info('main'); // Logs as "app"
-Logger.getLogger('app').info('main'); // Logs as "app"
+function scheduleJob() {
+  /**
+   * 4) Retrieving a context logger
+   */
+  const logger = Logger.getLogger();
 
-setTimeout(() => {
-  const id = 'abc';
-  const logger = Logger.getLogger(id);
-  logger.info('context'); // Logs as "id"
-  Logger.getLogger().info('context'); // Logs as "id"
-  Logger.getLogger(id).info('context'); // Logs as "id"
+  /**
+   * 5) Logs with job id from the parent
+   */
+  logger.info('scheduling job');
 
-  const custom = Logger.getLogger('custom');
-  custom.info('context'); // Logs as "custom"
+  setTimeout(() => {
+    /**
+     * 6) Logs with job id from the parent
+     */
+    logger.info('job done');
+  }, 3000);
+}
+
+const server = createServer((_, res) => {
+  job++;
+
+  /**
+   * 1) Setting a context logger using job id
+   */
+  const logger = new Logger(job);
+  Logger.setLogger(logger);
+
+  /**
+   * 2) Logs with with job id
+   */
+  logger.info('creating a new job');
+
+  /**
+   * 3) Calls another function that uses the context
+   */
+  scheduleJob();
+
+  res.setHeader('content-type', 'application/json');
+  res.end(JSON.stringify({ id: job, status: 'scheduled' }));
 });
+
+server.listen(8080);
+```
+
+```jsonc
+{
+  "severity": "INFO",
+  "time": "2022-12-03T10:00:00.000Z",
+  "message": "creating a new job",
+  "logging.googleapis.com/operation": { "id": 1 } // <- always includes context id
+}
+
+{
+  "severity": "INFO",
+  "time": "2022-12-03T10:00:00.398Z",
+  "message": "scheduling job",
+  "logging.googleapis.com/operation": { "id": 1 } // <- always includes context id
+}
+
+{
+  "severity": "INFO",
+  "time": "2022-12-03T10:00:01.000Z",
+  "message": "job done",
+  "logging.googleapis.com/operation": { "id": 1 } // <- always includes context id
+}
 ```

@@ -11,19 +11,55 @@
 ### Methods
 
 - [alert](Logger.md#alert)
+- [alert](Logger.md#alert-1)
 - [critical](Logger.md#critical)
+- [critical](Logger.md#critical-1)
 - [debug](Logger.md#debug)
+- [debug](Logger.md#debug-1)
 - [default](Logger.md#default)
+- [default](Logger.md#default-1)
 - [emergency](Logger.md#emergency)
+- [emergency](Logger.md#emergency-1)
 - [error](Logger.md#error)
+- [error](Logger.md#error-1)
 - [getLogger](Logger.md#getlogger)
 - [info](Logger.md#info)
+- [info](Logger.md#info-1)
 - [log](Logger.md#log)
+- [log](Logger.md#log-1)
 - [notice](Logger.md#notice)
+- [notice](Logger.md#notice-1)
 - [setLevel](Logger.md#setlevel)
+- [setLogger](Logger.md#setlogger)
 - [warning](Logger.md#warning)
+- [warning](Logger.md#warning-1)
+
+### Constructors
+
+- [constructor](Logger.md#constructor)
 
 ## Methods
+
+### alert
+
+▸ `Static` **alert**(`message`, `meta?`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `message` | `string` |
+| `meta?` | [`LogEntryMetadata`](../interfaces/LogEntryMetadata.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[Logger.ts:198](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L198)
+
+___
 
 ### alert
 
@@ -48,7 +84,28 @@ A person must take an action immediately.
 
 #### Defined in
 
-[Logger.ts:158](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L158)
+[Logger.ts:158](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L158)
+
+___
+
+### critical
+
+▸ `Static` **critical**(`message`, `meta?`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `message` | `string` |
+| `meta?` | [`LogEntryMetadata`](../interfaces/LogEntryMetadata.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[Logger.ts:194](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L194)
 
 ___
 
@@ -75,7 +132,28 @@ Critical events cause more severe problems or outages.
 
 #### Defined in
 
-[Logger.ts:154](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L154)
+[Logger.ts:154](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L154)
+
+___
+
+### debug
+
+▸ `Static` **debug**(`message`, `meta?`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `message` | `string` |
+| `meta?` | [`LogEntryMetadata`](../interfaces/LogEntryMetadata.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[Logger.ts:174](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L174)
 
 ___
 
@@ -102,7 +180,28 @@ Debug or trace information.
 
 #### Defined in
 
-[Logger.ts:134](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L134)
+[Logger.ts:134](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L134)
+
+___
+
+### default
+
+▸ `Static` **default**(`message`, `meta?`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `message` | `string` |
+| `meta?` | [`LogEntryMetadata`](../interfaces/LogEntryMetadata.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[Logger.ts:170](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L170)
 
 ___
 
@@ -129,7 +228,28 @@ The log entry has no assigned severity level.
 
 #### Defined in
 
-[Logger.ts:130](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L130)
+[Logger.ts:130](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L130)
+
+___
+
+### emergency
+
+▸ `Static` **emergency**(`message`, `meta?`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `message` | `string` |
+| `meta?` | [`LogEntryMetadata`](../interfaces/LogEntryMetadata.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[Logger.ts:202](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L202)
 
 ___
 
@@ -156,7 +276,28 @@ One or more systems are unusable.
 
 #### Defined in
 
-[Logger.ts:162](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L162)
+[Logger.ts:162](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L162)
+
+___
+
+### error
+
+▸ `Static` **error**(`message`, `meta?`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `message` | `string` |
+| `meta?` | [`LogEntryMetadata`](../interfaces/LogEntryMetadata.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[Logger.ts:190](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L190)
 
 ___
 
@@ -183,42 +324,15 @@ Error events are likely to cause problems.
 
 #### Defined in
 
-[Logger.ts:150](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L150)
+[Logger.ts:150](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L150)
 
 ___
 
 ### getLogger
 
-▸ `Static` **getLogger**(`name?`): [`Logger`](Logger.md)
+▸ `Static` **getLogger**(): [`Logger`](Logger.md)
 
-Creates a new or returns already initialized logger.
-The initial call with a name argument will store that logger in the context.
-Subsequent calls without the `name` argument will result in the same logger instance.
-
-```ts
-const app = Logger.getLogger('Application');
-
-app.info('main'); // Logs as "Application"
-Logger.getLogger().info('main'); // Logs as "Application"
-Logger.getLogger('Application').info('main'); // Logs as "Application"
-
-setTimeout(() => {
-  const id = "abc";
-  const logger = Logger.getLogger(id);
-  logger.info('context'); // Logs as "id"
-  Logger.getLogger().info('context'); // Logs as "id"
-  Logger.getLogger(id).info('context'); // Logs as "id"
-
-  const custom = Logger.getLogger('custom');
-  custom.info('context'); // Logs as "custom"
-});
-```
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `name?` | `string` |
+Returns logger from async context
 
 #### Returns
 
@@ -226,7 +340,28 @@ setTimeout(() => {
 
 #### Defined in
 
-[Logger.ts:70](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L70)
+[Logger.ts:66](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L66)
+
+___
+
+### info
+
+▸ `Static` **info**(`message`, `meta?`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `message` | `string` |
+| `meta?` | [`LogEntryMetadata`](../interfaces/LogEntryMetadata.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[Logger.ts:178](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L178)
 
 ___
 
@@ -253,7 +388,29 @@ Routine information, such as ongoing status or performance.
 
 #### Defined in
 
-[Logger.ts:138](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L138)
+[Logger.ts:138](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L138)
+
+___
+
+### log
+
+▸ `Static` **log**(`severity`, `message`, `meta?`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `severity` | [`Severity`](../enums/Severity.md) |
+| `message` | `string` |
+| `meta?` | [`LogEntryMetadata`](../interfaces/LogEntryMetadata.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[Logger.ts:166](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L166)
 
 ___
 
@@ -281,7 +438,28 @@ Log an event by specifying severity level
 
 #### Defined in
 
-[Logger.ts:94](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L94)
+[Logger.ts:80](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L80)
+
+___
+
+### notice
+
+▸ `Static` **notice**(`message`, `meta?`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `message` | `string` |
+| `meta?` | [`LogEntryMetadata`](../interfaces/LogEntryMetadata.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[Logger.ts:182](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L182)
 
 ___
 
@@ -308,7 +486,7 @@ Normal but significant events, such as start up, shut down, or a configuration c
 
 #### Defined in
 
-[Logger.ts:142](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L142)
+[Logger.ts:142](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L142)
 
 ___
 
@@ -330,7 +508,50 @@ Sets a global log level
 
 #### Defined in
 
-[Logger.ts:42](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L42)
+[Logger.ts:48](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L48)
+
+___
+
+### setLogger
+
+▸ `Static` **setLogger**(`logger`): `void`
+
+Sets logger to async context
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `logger` | [`Logger`](Logger.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[Logger.ts:57](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L57)
+
+___
+
+### warning
+
+▸ `Static` **warning**(`message`, `meta?`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `message` | `string` |
+| `meta?` | [`LogEntryMetadata`](../interfaces/LogEntryMetadata.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[Logger.ts:186](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L186)
 
 ___
 
@@ -357,4 +578,20 @@ Warning events might cause problems.
 
 #### Defined in
 
-[Logger.ts:146](https://github.com/igrek8/gc-json-logger/blob/39d7d9a/src/Logger.ts#L146)
+[Logger.ts:146](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L146)
+
+## Constructors
+
+### constructor
+
+• **new Logger**(`name?`)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+
+#### Defined in
+
+[Logger.ts:76](https://github.com/igrek8/gc-json-logger/blob/be99936/src/Logger.ts#L76)
