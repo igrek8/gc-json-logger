@@ -22,6 +22,8 @@
 - [emergency](Logger.md#emergency-1)
 - [error](Logger.md#error)
 - [error](Logger.md#error-1)
+- [getLabels](Logger.md#getlabels)
+- [getLabels](Logger.md#getlabels-1)
 - [getLogger](Logger.md#getlogger)
 - [info](Logger.md#info)
 - [info](Logger.md#info-1)
@@ -59,7 +61,7 @@
 
 #### Defined in
 
-[Logger.ts:224](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L224)
+[Logger.ts:231](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L231)
 
 ___
 
@@ -86,7 +88,7 @@ A person must take an action immediately.
 
 #### Defined in
 
-[Logger.ts:184](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L184)
+[Logger.ts:191](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L191)
 
 ___
 
@@ -107,7 +109,7 @@ ___
 
 #### Defined in
 
-[Logger.ts:220](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L220)
+[Logger.ts:227](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L227)
 
 ___
 
@@ -134,7 +136,7 @@ Critical events cause more severe problems or outages.
 
 #### Defined in
 
-[Logger.ts:180](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L180)
+[Logger.ts:187](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L187)
 
 ___
 
@@ -155,7 +157,7 @@ ___
 
 #### Defined in
 
-[Logger.ts:200](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L200)
+[Logger.ts:207](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L207)
 
 ___
 
@@ -182,7 +184,7 @@ Debug or trace information.
 
 #### Defined in
 
-[Logger.ts:160](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L160)
+[Logger.ts:167](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L167)
 
 ___
 
@@ -203,7 +205,7 @@ ___
 
 #### Defined in
 
-[Logger.ts:196](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L196)
+[Logger.ts:203](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L203)
 
 ___
 
@@ -230,7 +232,7 @@ The log entry has no assigned severity level.
 
 #### Defined in
 
-[Logger.ts:156](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L156)
+[Logger.ts:163](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L163)
 
 ___
 
@@ -251,7 +253,7 @@ ___
 
 #### Defined in
 
-[Logger.ts:228](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L228)
+[Logger.ts:235](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L235)
 
 ___
 
@@ -278,7 +280,7 @@ One or more systems are unusable.
 
 #### Defined in
 
-[Logger.ts:188](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L188)
+[Logger.ts:195](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L195)
 
 ___
 
@@ -299,7 +301,7 @@ ___
 
 #### Defined in
 
-[Logger.ts:216](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L216)
+[Logger.ts:223](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L223)
 
 ___
 
@@ -326,7 +328,43 @@ Error events are likely to cause problems.
 
 #### Defined in
 
-[Logger.ts:176](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L176)
+[Logger.ts:183](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L183)
+
+___
+
+### getLabels
+
+▸ `Static` **getLabels**(): `Record`<`string`, `undefined` \| `string`\>
+
+Returns global default user labels
+
+#### Returns
+
+`Record`<`string`, `undefined` \| `string`\>
+
+#### Defined in
+
+[Logger.ts:67](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L67)
+
+___
+
+### getLabels
+
+▸ **getLabels**(): `Record`<`string`, `undefined` \| `string`\>
+
+Returns default user labels
+
+#### Returns
+
+`Record`<`string`, `undefined` \| `string`\>
+
+#### Implementation of
+
+[ILogger](../interfaces/ILogger.md).[getLabels](../interfaces/ILogger.md#getlabels)
+
+#### Defined in
+
+[Logger.ts:243](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L243)
 
 ___
 
@@ -342,7 +380,7 @@ Returns logger from async context
 
 #### Defined in
 
-[Logger.ts:78](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L78)
+[Logger.ts:85](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L85)
 
 ___
 
@@ -363,7 +401,7 @@ ___
 
 #### Defined in
 
-[Logger.ts:204](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L204)
+[Logger.ts:211](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L211)
 
 ___
 
@@ -390,7 +428,7 @@ Routine information, such as ongoing status or performance.
 
 #### Defined in
 
-[Logger.ts:164](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L164)
+[Logger.ts:171](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L171)
 
 ___
 
@@ -412,7 +450,7 @@ ___
 
 #### Defined in
 
-[Logger.ts:192](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L192)
+[Logger.ts:199](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L199)
 
 ___
 
@@ -440,7 +478,7 @@ Log an event by specifying severity level
 
 #### Defined in
 
-[Logger.ts:98](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L98)
+[Logger.ts:105](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L105)
 
 ___
 
@@ -461,7 +499,7 @@ ___
 
 #### Defined in
 
-[Logger.ts:208](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L208)
+[Logger.ts:215](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L215)
 
 ___
 
@@ -488,7 +526,7 @@ Normal but significant events, such as start up, shut down, or a configuration c
 
 #### Defined in
 
-[Logger.ts:168](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L168)
+[Logger.ts:175](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L175)
 
 ___
 
@@ -510,7 +548,7 @@ Sets global default user labels
 
 #### Defined in
 
-[Logger.ts:60](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L60)
+[Logger.ts:60](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L60)
 
 ___
 
@@ -536,7 +574,7 @@ Sets default user labels
 
 #### Defined in
 
-[Logger.ts:232](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L232)
+[Logger.ts:239](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L239)
 
 ___
 
@@ -558,7 +596,7 @@ Sets a global log level
 
 #### Defined in
 
-[Logger.ts:53](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L53)
+[Logger.ts:53](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L53)
 
 ___
 
@@ -580,7 +618,7 @@ Sets logger to async context
 
 #### Defined in
 
-[Logger.ts:69](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L69)
+[Logger.ts:76](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L76)
 
 ___
 
@@ -601,7 +639,7 @@ ___
 
 #### Defined in
 
-[Logger.ts:212](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L212)
+[Logger.ts:219](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L219)
 
 ___
 
@@ -628,7 +666,7 @@ Warning events might cause problems.
 
 #### Defined in
 
-[Logger.ts:172](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L172)
+[Logger.ts:179](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L179)
 
 ## Constructors
 
@@ -645,4 +683,4 @@ Warning events might cause problems.
 
 #### Defined in
 
-[Logger.ts:93](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/Logger.ts#L93)
+[Logger.ts:100](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/Logger.ts#L100)

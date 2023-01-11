@@ -16,6 +16,7 @@
 - [default](ILogger.md#default)
 - [emergency](ILogger.md#emergency)
 - [error](ILogger.md#error)
+- [getLabels](ILogger.md#getlabels)
 - [info](ILogger.md#info)
 - [log](ILogger.md#log)
 - [notice](ILogger.md#notice)
@@ -43,7 +44,7 @@ A person must take an action immediately.
 
 #### Defined in
 
-[ILogger.ts:48](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/ILogger.ts#L48)
+[ILogger.ts:48](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/ILogger.ts#L48)
 
 ___
 
@@ -66,7 +67,7 @@ Critical events cause more severe problems or outages.
 
 #### Defined in
 
-[ILogger.ts:43](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/ILogger.ts#L43)
+[ILogger.ts:43](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/ILogger.ts#L43)
 
 ___
 
@@ -89,7 +90,7 @@ Debug or trace information.
 
 #### Defined in
 
-[ILogger.ts:18](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/ILogger.ts#L18)
+[ILogger.ts:18](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/ILogger.ts#L18)
 
 ___
 
@@ -112,7 +113,7 @@ The log entry has no assigned severity level.
 
 #### Defined in
 
-[ILogger.ts:13](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/ILogger.ts#L13)
+[ILogger.ts:13](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/ILogger.ts#L13)
 
 ___
 
@@ -135,7 +136,7 @@ One or more systems are unusable.
 
 #### Defined in
 
-[ILogger.ts:53](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/ILogger.ts#L53)
+[ILogger.ts:53](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/ILogger.ts#L53)
 
 ___
 
@@ -158,7 +159,23 @@ Error events are likely to cause problems.
 
 #### Defined in
 
-[ILogger.ts:38](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/ILogger.ts#L38)
+[ILogger.ts:38](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/ILogger.ts#L38)
+
+___
+
+### getLabels
+
+▸ **getLabels**(): `Record`<`string`, `undefined` \| `string`\>
+
+Returns default user labels
+
+#### Returns
+
+`Record`<`string`, `undefined` \| `string`\>
+
+#### Defined in
+
+[ILogger.ts:63](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/ILogger.ts#L63)
 
 ___
 
@@ -181,7 +198,7 @@ Routine information, such as ongoing status or performance.
 
 #### Defined in
 
-[ILogger.ts:23](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/ILogger.ts#L23)
+[ILogger.ts:23](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/ILogger.ts#L23)
 
 ___
 
@@ -205,7 +222,7 @@ Log an event by specifying severity level
 
 #### Defined in
 
-[ILogger.ts:8](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/ILogger.ts#L8)
+[ILogger.ts:8](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/ILogger.ts#L8)
 
 ___
 
@@ -228,7 +245,7 @@ Normal but significant events, such as start up, shut down, or a configuration c
 
 #### Defined in
 
-[ILogger.ts:28](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/ILogger.ts#L28)
+[ILogger.ts:28](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/ILogger.ts#L28)
 
 ___
 
@@ -250,7 +267,7 @@ Sets default user labels
 
 #### Defined in
 
-[ILogger.ts:58](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/ILogger.ts#L58)
+[ILogger.ts:58](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/ILogger.ts#L58)
 
 ___
 
@@ -273,4 +290,4 @@ Warning events might cause problems.
 
 #### Defined in
 
-[ILogger.ts:33](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/ILogger.ts#L33)
+[ILogger.ts:33](https://github.com/igrek8/gc-json-logger/blob/e676c17/src/ILogger.ts#L33)
