@@ -21,6 +21,11 @@ export class Logger implements ILogger {
   protected static level = Severity.INFO;
 
   /**
+   * Global default user labels
+   */
+  protected static labels: Record<string, string | undefined> = {};
+
+  /**
    * Default context logger
    */
   protected static appLogger: Logger = new Logger('Application');
@@ -50,6 +55,13 @@ export class Logger implements ILogger {
   }
 
   /**
+   * Sets global default user labels
+   */
+  public static setLabels(labels: Record<string, string | undefined>): void {
+    this.labels = labels;
+  }
+
+  /**
    * Sets logger to async context
    * @param logger
    * @returns
@@ -73,8 +85,14 @@ export class Logger implements ILogger {
    */
   protected readonly name: string;
 
-  public constructor(name: string = v4()) {
+  /**
+   * Logger default user labels
+   */
+  protected labels: Record<string, string | undefined> = {};
+
+  public constructor(name: string = v4(), labels: Record<string, string | undefined> = {}) {
     this.name = name;
+    this.setLabels(labels);
   }
 
   public log(severity: Severity, message: string, meta: LogEntryMetadata = {}): void {
@@ -121,7 +139,15 @@ export class Logger implements ILogger {
     }
 
     entry['logging.googleapis.com/operation'] = { id: this.name };
-    entry['logging.googleapis.com/labels'] = labels;
+
+    /**
+     * Add default user labels
+     */
+    const mergedLabels = { ...Logger.labels, ...this.labels, ...labels };
+
+    if (Object.keys(mergedLabels).length > 0) {
+      entry['logging.googleapis.com/labels'] = mergedLabels;
+    }
 
     const channel = severity >= Severity.ERROR ? 'stderr' : 'stdout';
     process[channel].write(toJSON(entry) + '\n');
@@ -201,5 +227,9 @@ export class Logger implements ILogger {
 
   public static emergency(message: string, meta?: LogEntryMetadata): void {
     this.getLogger().emergency(message, meta);
+  }
+
+  public setLabels(labels: Record<string, string | undefined>) {
+    this.labels = labels;
   }
 }

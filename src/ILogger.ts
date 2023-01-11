@@ -51,4 +51,9 @@ export interface ILogger {
    * One or more systems are unusable.
    */
   emergency(message: string, meta?: LogEntryMetadata): void;
+
+  /**
+   * Sets default user labels
+   */
+  setLabels(labels: Record<string, string | undefined>): void;
 }

@@ -13,15 +13,16 @@ jest.setSystemTime(0);
 describe('Logger', () => {
   it('logs to stdout', async () => {
     jest.spyOn(process.stdout, 'write').mockImplementation(() => true);
-    const logger = new Logger('context');
+    const logger = new Logger('context', { version: '1.0.0' });
     Logger.setLogger(logger);
+    Logger.setLabels({ worker: '1' });
     Logger.info('Running', { pid: 1 });
     expect(toJSON).toHaveBeenCalledWith({
       time: '1970-01-01T00:00:00.000Z',
       severity: 'INFO',
       message: 'Running',
       pid: 1,
-      'logging.googleapis.com/labels': undefined,
+      'logging.googleapis.com/labels': { worker: '1', version: '1.0.0' },
       'logging.googleapis.com/operation': { id: 'context' },
     });
   });
@@ -31,6 +32,7 @@ describe('Logger', () => {
     jest.spyOn(process.stdout, 'write').mockImplementation(() => true);
     const logger = new Logger();
     Logger.setLogger(logger);
+    Logger.setLabels({});
     Logger.info('Running');
     expect(toJSON).toHaveBeenCalledWith({
       time: '1970-01-01T00:00:00.000Z',
@@ -57,6 +59,7 @@ describe('Logger', () => {
     const stdout = jest.spyOn(process.stdout, 'write').mockImplementation(() => true);
     const logger = new Logger('context');
     Logger.setLogger(logger);
+    Logger.setLabels({});
     Logger.setLevel(Severity.INFO);
     Logger.log(Severity.DEBUG, 'Launching');
     expect(stdout).not.toHaveBeenCalled();
@@ -66,6 +69,7 @@ describe('Logger', () => {
     jest.spyOn(process.stderr, 'write').mockImplementation(() => true);
     const logger = new Logger('context');
     Logger.setLogger(logger);
+    Logger.setLabels({});
     const error = new Error('ECONNRESET');
     Logger.error('Remote service is down', { error });
     expect(toJSON).toHaveBeenLastCalledWith({
@@ -83,6 +87,7 @@ describe('Logger', () => {
     jest.spyOn(process.stderr, 'write').mockImplementation(() => true);
     const logger = new Logger('context');
     Logger.setLogger(logger);
+    Logger.setLabels({});
     const error = new Error('ECONNRESET');
     delete error.stack;
     Logger.error('Remote service is down', { error });
