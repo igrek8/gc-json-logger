@@ -32,7 +32,7 @@ https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.events/
 
 #### Defined in
 
-[types/LogEntry.ts:52](https://github.com/igrek8/gc-json-logger/blob/be99936/src/types/LogEntry.ts#L52)
+[types/LogEntry.ts:52](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/types/LogEntry.ts#L52)
 
 ___
 
@@ -44,7 +44,7 @@ A common proto for logging HTTP requests. Only contains semantics defined by the
 
 #### Defined in
 
-[types/LogEntry.ts:29](https://github.com/igrek8/gc-json-logger/blob/be99936/src/types/LogEntry.ts#L29)
+[types/LogEntry.ts:29](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/types/LogEntry.ts#L29)
 
 ___
 
@@ -62,7 +62,7 @@ Cloud Logging truncates label keys that exceed 512 B and label values that excee
 
 #### Defined in
 
-[types/LogEntry.ts:45](https://github.com/igrek8/gc-json-logger/blob/be99936/src/types/LogEntry.ts#L45)
+[types/LogEntry.ts:45](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/types/LogEntry.ts#L45)
 
 ___
 
@@ -74,7 +74,7 @@ Optional. Information about an operation associated with the log entry, if appli
 
 #### Defined in
 
-[types/LogEntry.ts:34](https://github.com/igrek8/gc-json-logger/blob/be99936/src/types/LogEntry.ts#L34)
+[types/LogEntry.ts:34](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/types/LogEntry.ts#L34)
 
 ___
 
@@ -88,7 +88,7 @@ Note: message is saved as textPayload if it is the only field remaining after th
 
 #### Defined in
 
-[types/LogEntry.ts:15](https://github.com/igrek8/gc-json-logger/blob/be99936/src/types/LogEntry.ts#L15)
+[types/LogEntry.ts:15](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/types/LogEntry.ts#L15)
 
 ___
 
@@ -100,7 +100,7 @@ Optional. The severity of the log entry. The default value is LogSeverity.DEFAUL
 
 #### Defined in
 
-[types/LogEntry.ts:8](https://github.com/igrek8/gc-json-logger/blob/be99936/src/types/LogEntry.ts#L8)
+[types/LogEntry.ts:8](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/types/LogEntry.ts#L8)
 
 ___
 
@@ -116,4 +116,4 @@ A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to n
 
 #### Defined in
 
-[types/LogEntry.ts:24](https://github.com/igrek8/gc-json-logger/blob/be99936/src/types/LogEntry.ts#L24)
+[types/LogEntry.ts:24](https://github.com/igrek8/gc-json-logger/blob/b34f665/src/types/LogEntry.ts#L24)
