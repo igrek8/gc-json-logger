@@ -62,6 +62,13 @@ export class Logger implements ILogger {
   }
 
   /**
+   * Returns global default user labels
+   */
+  public static getLabels(): Record<string, string | undefined> {
+    return this.labels;
+  }
+
+  /**
    * Sets logger to async context
    * @param logger
    * @returns
@@ -231,5 +238,9 @@ export class Logger implements ILogger {
 
   public setLabels(labels: Record<string, string | undefined>) {
     this.labels = labels;
+  }
+
+  public getLabels(): Record<string, string | undefined> {
+    return this.labels;
   }
 }

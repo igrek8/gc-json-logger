@@ -56,4 +56,9 @@ export interface ILogger {
    * Sets default user labels
    */
   setLabels(labels: Record<string, string | undefined>): void;
+
+  /**
+   * Returns default user labels
+   */
+  getLabels(): Record<string, string | undefined>;
 }

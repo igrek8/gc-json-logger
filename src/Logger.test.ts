@@ -13,18 +13,29 @@ jest.setSystemTime(0);
 describe('Logger', () => {
   it('logs to stdout', async () => {
     jest.spyOn(process.stdout, 'write').mockImplementation(() => true);
-    const logger = new Logger('context', { version: '1.0.0' });
+    const logger = new Logger('context');
     Logger.setLogger(logger);
-    Logger.setLabels({ worker: '1' });
+    Logger.setLabels({ tag: '1' });
     Logger.info('Running', { pid: 1 });
     expect(toJSON).toHaveBeenCalledWith({
       time: '1970-01-01T00:00:00.000Z',
       severity: 'INFO',
       message: 'Running',
       pid: 1,
-      'logging.googleapis.com/labels': { worker: '1', version: '1.0.0' },
+      'logging.googleapis.com/labels': { tag: '1' },
       'logging.googleapis.com/operation': { id: 'context' },
     });
+  });
+
+  it('sets global user labels', async () => {
+    Logger.setLabels({ tag: '1' });
+    expect(Logger.getLabels()).toEqual({ tag: '1' });
+  });
+
+  it('sets local user labels', async () => {
+    const logger = new Logger('context');
+    logger.setLabels({ tag: '1' });
+    expect(logger.getLabels()).toEqual({ tag: '1' });
   });
 
   it('fallback to uuid', async () => {
