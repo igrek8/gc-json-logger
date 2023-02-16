@@ -1,4 +1,4 @@
-import { v4 } from 'uuid';
+import { randomUUID } from 'crypto';
 import { Logger } from './Logger';
 import { Severity } from './types/Severity';
 import { toJSON } from './utils/toJSON';
@@ -6,11 +6,27 @@ import { toJSON } from './utils/toJSON';
 jest.mock('async_hooks');
 jest.mock('uuid');
 jest.mock('./utils/toJSON');
+jest.mock('crypto', () => ({
+  ...jest.requireActual('crypto'),
+  randomUUID: jest.fn(),
+}));
 
 jest.useFakeTimers();
 jest.setSystemTime(0);
 
 describe('Logger', () => {
+  it('fallback to application logger', async () => {
+    jest.spyOn(process.stdout, 'write').mockImplementation(() => true);
+    Logger.info('Running');
+    expect(toJSON).toHaveBeenCalledWith({
+      time: '1970-01-01T00:00:00.000Z',
+      severity: 'INFO',
+      message: 'Running',
+      'logging.googleapis.com/labels': undefined,
+      'logging.googleapis.com/operation': { id: 'Application' },
+    });
+  });
+
   it('logs to stdout', async () => {
     jest.spyOn(process.stdout, 'write').mockImplementation(() => true);
     const logger = new Logger('context');
@@ -39,7 +55,7 @@ describe('Logger', () => {
   });
 
   it('fallback to uuid', async () => {
-    (v4 as jest.MockedFn<typeof v4>).mockReturnValueOnce('uuid');
+    (randomUUID as jest.MockedFn<typeof randomUUID>).mockReturnValueOnce('uuid');
     jest.spyOn(process.stdout, 'write').mockImplementation(() => true);
     const logger = new Logger();
     Logger.setLogger(logger);
@@ -51,18 +67,6 @@ describe('Logger', () => {
       message: 'Running',
       'logging.googleapis.com/labels': undefined,
       'logging.googleapis.com/operation': { id: 'uuid' },
-    });
-  });
-
-  it('fallback to application logger', async () => {
-    jest.spyOn(process.stdout, 'write').mockImplementation(() => true);
-    Logger.info('Running');
-    expect(toJSON).toHaveBeenCalledWith({
-      time: '1970-01-01T00:00:00.000Z',
-      severity: 'INFO',
-      message: 'Running',
-      'logging.googleapis.com/labels': undefined,
-      'logging.googleapis.com/operation': { id: 'Application' },
     });
   });
 

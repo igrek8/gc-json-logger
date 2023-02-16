@@ -1,16 +1,12 @@
 import * as assert from 'assert';
-import { createHook, executionAsyncResource } from 'async_hooks';
-import { v4 } from 'uuid';
+import { AsyncLocalStorage } from 'async_hooks';
+import { randomUUID } from 'crypto';
 
 import { ILogger } from './ILogger';
 import { LogEntry } from './types/LogEntry';
 import { LogEntryMetadata } from './types/LogEntryMetadata';
 import { Severity } from './types/Severity';
 import { toJSON } from './utils/toJSON';
-
-const state = Symbol();
-
-type Context = Record<symbol, Logger | undefined>;
 
 const ERROR_EVENT = 'type.googleapis.com/google.devtools.clouderrorreporting.v1beta1.ReportedErrorEvent';
 
@@ -31,21 +27,9 @@ export class Logger implements ILogger {
   protected static appLogger: Logger = new Logger('Application');
 
   /**
-   * Listen to async resource lifecycle
+   * Stores logger references in async storage
    */
-  static {
-    createHook({
-      init: (_asyncId, _type, _triggerAsyncId, child: Context): void => {
-        const parent = executionAsyncResource() as Context;
-        if (parent) {
-          /**
-           * Propagate context from parent to child
-           */
-          child[state] = parent[state];
-        }
-      },
-    }).enable();
-  }
+  protected static storage = new AsyncLocalStorage<Logger>();
 
   /**
    * Sets a global log level
@@ -70,12 +54,9 @@ export class Logger implements ILogger {
 
   /**
    * Sets logger to async context
-   * @param logger
-   * @returns
    */
   public static setLogger(logger: Logger): void {
-    const ctx = executionAsyncResource() as Context;
-    ctx[state] = logger;
+    this.storage.enterWith(logger);
   }
 
   /**
@@ -83,8 +64,7 @@ export class Logger implements ILogger {
    * @returns
    */
   public static getLogger(): Logger {
-    const ctx = executionAsyncResource() as Context;
-    return ctx[state] ?? this.appLogger;
+    return this.storage.getStore() ?? this.appLogger;
   }
 
   /**
@@ -97,7 +77,7 @@ export class Logger implements ILogger {
    */
   protected labels: Record<string, string | undefined> = {};
 
-  public constructor(name: string = v4(), labels: Record<string, string | undefined> = {}) {
+  public constructor(name: string = randomUUID(), labels: Record<string, string | undefined> = {}) {
     this.name = name;
     this.setLabels(labels);
   }
