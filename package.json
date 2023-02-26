@@ -1,7 +1,6 @@
 {
   "name": "gc-json-logger",
   "version": "0.0.0",
-  "private": false,
   "license": "MIT",
   "author": "Igor Korchagin (https://github.com/igrek8)",
   "keywords": [
@@ -12,8 +11,9 @@
     "google-cloud"
   ],
   "description": "Log JSON entries to stdout/stderr to be queried in Google Cloud Monitoring",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "runkitExampleFilename": "runkit.js",
   "homepage": "https://github.com/igrek8/gc-json-logger#readme",
   "repository": {
     "type": "git",
@@ -23,53 +23,58 @@
     "url": "https://github.com/igrek8/gc-json-logger/issues"
   },
   "files": [
-    "./dist",
-    "./runkit.js"
+    "dist",
+    "runkit.js"
   ],
+  "prettier": "@igrek8/prettier",
+  "publishConfig": {
+    "access": "public"
+  },
+  "release": {
+    "extends": "@igrek8/semantic-release"
+  },
+  "jest": {
+    "preset": "@igrek8/jest",
+    "rootDir": "src"
+  },
+  "eslintConfig": {
+    "extends": "@igrek8/eslint-config",
+    "env": {
+      "node": true
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "scripts": {
-    "prepare": "husky install",
-    "clean": "rimraf ./dist",
+    "clean": "rimraf dist",
     "test": "jest",
-    "compile": "tsc --project ./tsconfig.build.json",
+    "compile": "tsc -p tsconfig.build.json",
     "build": "npm run clean && npm run compile",
     "lint": "eslint \"**/*\"",
     "format": "prettier --check \"**/*\"",
-    "docs:build": "typedoc --out ./docs",
-    "docs:publish": "cp ./public/index.html ./docs/index.html && gh-pages --dist ./docs",
-    "docs": "npm run docs:build && npm run docs:publish",
-    "watch": "tsc --watch --project ./tsconfig.build.json"
+    "docs": "typedoc build -o docs && typedoc publish -o docs"
   },
-  "devDependencies": {
-    "@commitlint/cli": "^17.2.0",
-    "@commitlint/config-conventional": "^17.2.0",
-    "@semantic-release/commit-analyzer": "^9.0.2",
-    "@semantic-release/github": "^8.0.6",
-    "@semantic-release/npm": "^9.0.1",
-    "@semantic-release/release-notes-generator": "^10.0.3",
-    "@types/jest": "^29.0.3",
-    "@types/node": "^16.11.59",
-    "@typescript-eslint/eslint-plugin": "^5.38.0",
-    "@typescript-eslint/parser": "^5.38.0",
-    "eslint": "^8.23.1",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "gh-pages": "^4.0.0",
-    "husky": "^8.0.1",
-    "jest": "^29.0.3",
-    "prettier": "^2.7.1",
-    "rimraf": "^3.0.2",
-    "semantic-release": "^19.0.5",
-    "ts-jest": "^29.0.1",
-    "ts-node": "^10.9.1",
-    "typedoc": "^0.23.20",
-    "typedoc-plugin-markdown": "^3.13.6",
-    "typescript": "^4.8.3"
+  "engines": {
+    "node": ">=14"
   },
   "dependencies": {
     "tslib": "^2"
   },
-  "runkitExampleFilename": "./runkit.js",
-  "engines": {
-    "node": ">=14"
+  "devDependencies": {
+    "@commitlint/cli": "17.4.4",
+    "@commitlint/config-conventional": "17.4.4",
+    "@igrek8/eslint-config": "1.0.6",
+    "@igrek8/jest": "1.0.1",
+    "@igrek8/prettier": "1.0.1",
+    "@igrek8/semantic-release": "1.0.2",
+    "@igrek8/typescript": "1.0.1",
+    "@igrek8/typedoc": "1.0.1",
+    "@types/node": "18.14.2",
+    "husky": "8.0.3",
+    "rimraf": "4.1.2",
+    "tslib": "2.5.0"
   }
 }
