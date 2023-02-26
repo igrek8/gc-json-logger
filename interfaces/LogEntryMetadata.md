@@ -26,7 +26,7 @@ https://cloud.google.com/error-reporting/docs/formatting-error-messages
 
 #### Defined in
 
-[types/LogEntryMetadata.ts:32](https://github.com/igrek8/gc-json-logger/blob/780809b/src/types/LogEntryMetadata.ts#L32)
+[types/LogEntryMetadata.ts:32](https://github.com/igrek8/gc-json-logger/blob/3a1b9c7/src/types/LogEntryMetadata.ts#L32)
 
 ___
 
@@ -40,7 +40,7 @@ https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#HttpRequest
 
 #### Defined in
 
-[types/LogEntryMetadata.ts:14](https://github.com/igrek8/gc-json-logger/blob/780809b/src/types/LogEntryMetadata.ts#L14)
+[types/LogEntryMetadata.ts:14](https://github.com/igrek8/gc-json-logger/blob/3a1b9c7/src/types/LogEntryMetadata.ts#L14)
 
 ___
 
@@ -58,4 +58,4 @@ Cloud Logging truncates label keys that exceed 512 B and label values that excee
 
 #### Defined in
 
-[types/LogEntryMetadata.ts:25](https://github.com/igrek8/gc-json-logger/blob/780809b/src/types/LogEntryMetadata.ts#L25)
+[types/LogEntryMetadata.ts:25](https://github.com/igrek8/gc-json-logger/blob/3a1b9c7/src/types/LogEntryMetadata.ts#L25)
