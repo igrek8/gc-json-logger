@@ -24,7 +24,7 @@
 
 #### Defined in
 
-[types/Severity.ts:17](https://github.com/igrek8/gc-json-logger/blob/3a1b9c7/src/types/Severity.ts#L17)
+[types/Severity.ts:17](https://github.com/igrek8/gc-json-logger/blob/b39234c/src/types/Severity.ts#L17)
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 #### Defined in
 
-[types/Severity.ts:15](https://github.com/igrek8/gc-json-logger/blob/3a1b9c7/src/types/Severity.ts#L15)
+[types/Severity.ts:15](https://github.com/igrek8/gc-json-logger/blob/b39234c/src/types/Severity.ts#L15)
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 #### Defined in
 
-[types/Severity.ts:5](https://github.com/igrek8/gc-json-logger/blob/3a1b9c7/src/types/Severity.ts#L5)
+[types/Severity.ts:5](https://github.com/igrek8/gc-json-logger/blob/b39234c/src/types/Severity.ts#L5)
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 #### Defined in
 
-[types/Severity.ts:3](https://github.com/igrek8/gc-json-logger/blob/3a1b9c7/src/types/Severity.ts#L3)
+[types/Severity.ts:3](https://github.com/igrek8/gc-json-logger/blob/b39234c/src/types/Severity.ts#L3)
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 #### Defined in
 
-[types/Severity.ts:19](https://github.com/igrek8/gc-json-logger/blob/3a1b9c7/src/types/Severity.ts#L19)
+[types/Severity.ts:19](https://github.com/igrek8/gc-json-logger/blob/b39234c/src/types/Severity.ts#L19)
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 #### Defined in
 
-[types/Severity.ts:13](https://github.com/igrek8/gc-json-logger/blob/3a1b9c7/src/types/Severity.ts#L13)
+[types/Severity.ts:13](https://github.com/igrek8/gc-json-logger/blob/b39234c/src/types/Severity.ts#L13)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 #### Defined in
 
-[types/Severity.ts:7](https://github.com/igrek8/gc-json-logger/blob/3a1b9c7/src/types/Severity.ts#L7)
+[types/Severity.ts:7](https://github.com/igrek8/gc-json-logger/blob/b39234c/src/types/Severity.ts#L7)
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 #### Defined in
 
-[types/Severity.ts:9](https://github.com/igrek8/gc-json-logger/blob/3a1b9c7/src/types/Severity.ts#L9)
+[types/Severity.ts:9](https://github.com/igrek8/gc-json-logger/blob/b39234c/src/types/Severity.ts#L9)
 
 ___
 
@@ -104,4 +104,4 @@ ___
 
 #### Defined in
 
-[types/Severity.ts:11](https://github.com/igrek8/gc-json-logger/blob/3a1b9c7/src/types/Severity.ts#L11)
+[types/Severity.ts:11](https://github.com/igrek8/gc-json-logger/blob/b39234c/src/types/Severity.ts#L11)
