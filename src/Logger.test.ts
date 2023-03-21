@@ -4,7 +4,6 @@ import { Severity } from './types/Severity';
 import { toJSON } from './utils/toJSON';
 
 jest.mock('async_hooks');
-jest.mock('uuid');
 jest.mock('./utils/toJSON');
 jest.mock('crypto', () => ({
   ...jest.requireActual('crypto'),
@@ -55,7 +54,7 @@ describe('Logger', () => {
   });
 
   it('fallback to uuid', async () => {
-    (randomUUID as jest.MockedFn<typeof randomUUID>).mockReturnValueOnce('uuid');
+    (randomUUID as jest.MockedFn<typeof randomUUID>).mockReturnValueOnce('00000000-0000-0000-0000-000000000000');
     jest.spyOn(process.stdout, 'write').mockImplementation(() => true);
     const logger = new Logger();
     Logger.setLogger(logger);
@@ -66,7 +65,7 @@ describe('Logger', () => {
       severity: 'INFO',
       message: 'Running',
       'logging.googleapis.com/labels': undefined,
-      'logging.googleapis.com/operation': { id: 'uuid' },
+      'logging.googleapis.com/operation': { id: '00000000-0000-0000-0000-000000000000' },
     });
   });
 
