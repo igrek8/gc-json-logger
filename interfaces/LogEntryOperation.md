@@ -18,4 +18,4 @@ Optional. An arbitrary operation identifier. Log entries with the same identifie
 
 #### Defined in
 
-[types/LogEntryOperation.ts:5](https://github.com/igrek8/gc-json-logger/blob/b39234c/src/types/LogEntryOperation.ts#L5)
+[types/LogEntryOperation.ts:5](https://github.com/igrek8/gc-json-logger/blob/998314d/src/types/LogEntryOperation.ts#L5)
