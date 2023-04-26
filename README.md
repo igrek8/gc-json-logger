@@ -99,3 +99,19 @@ server.listen(8080);
   "logging.googleapis.com/operation": { "id": 1 } // <- always includes context id
 }
 ```
+
+## Usage
+
+The various logging methods (`debug`, `info`, `notice`, etc.) require two parameters. The first parameter is intended for a human-readable string, while the second parameter captures context (such as JSON objects with circular references).
+
+Example of **incorrect** use: :x:
+
+```ts
+this.logger.log(Severity.DEBUG, JSON.stringify(someObject));
+```
+
+Example of **correct** use: :white_check_mark:
+
+```ts
+this.logger.debug('received tickets', someObject);
+```
