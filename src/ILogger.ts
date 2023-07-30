@@ -61,4 +61,9 @@ export interface ILogger {
    * Returns default user labels
    */
   getLabels(): Record<string, string | undefined>;
+
+  /**
+   * Returns logger name
+   */
+  getName(): string;
 }

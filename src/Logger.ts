@@ -53,10 +53,11 @@ export class Logger implements ILogger {
   }
 
   /**
-   * Sets logger to async context
+   * Calls a function with a given logger
    */
-  public static setLogger(logger: Logger): void {
-    this.storage.enterWith(logger);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public static runWith<T extends (...args: any[]) => any>(logger: Logger, cb: T): ReturnType<T> {
+    return this.storage.run(logger, cb);
   }
 
   /**
@@ -216,11 +217,19 @@ export class Logger implements ILogger {
     this.getLogger().emergency(message, meta);
   }
 
+  public static getName(): string {
+    return this.getLogger().getName();
+  }
+
   public setLabels(labels: Record<string, string | undefined>) {
     this.labels = labels;
   }
 
   public getLabels(): Record<string, string | undefined> {
     return this.labels;
+  }
+
+  public getName(): string {
+    return this.name;
   }
 }
