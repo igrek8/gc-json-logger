@@ -1,6 +1,6 @@
 gc-json-logger / [Exports](modules.md)
 
-# Async Context [Structured Logger](https://cloud.google.com/logging/docs/structured-logging) for GCP projects
+# Logger for [Structured Logging](https://cloud.google.com/logging/docs/structured-logging) with [Asynchronous Context Tracking](https://nodejs.org/api/async_context.html#class-asynclocalstorage) (Stability: 2 - Stable)
 
 Allows printing logs to `stdout`, `stderr` for further action in Google Cloud platform. Given that log agent ingests logs from `stdout` streams when running in GKE.
 
@@ -9,10 +9,6 @@ Allows printing logs to `stdout`, `stderr` for further action in Google Cloud pl
 ![Health](https://badgen.net/github/checks/igrek8/gc-json-logger)
 ![License](https://badgen.net/github/license/igrek8/gc-json-logger)
 [![Runkit](https://badgen.net/badge/runkit/playground/cyan)](https://npm.runkit.com/gc-json-logger)
-
-## Precaution
-
-A logger makes use of [`async_hooks`](https://nodejs.org/api/async_hooks.html#async-hooks) module which is currently **experimental**. However, the use of `async_hooks` mechanism was at basic.
 
 ## Installation
 
@@ -28,7 +24,7 @@ yarn add gc-json-logger
 
 ## Integration
 
-```ts
+```js
 const { Logger } = require('gc-json-logger');
 const { createServer } = require('http');
 
@@ -60,20 +56,20 @@ const server = createServer((_, res) => {
    * 1) Setting a context logger using job id
    */
   const logger = new Logger(job);
-  Logger.setLogger(logger);
+  Logger.runWith(logger, () => {
+    /**
+     * 2) Logs with with job id
+     */
+    logger.info('creating a new job');
 
-  /**
-   * 2) Logs with with job id
-   */
-  logger.info('creating a new job');
+    /**
+     * 3) Calls another function that uses the context
+     */
+    scheduleJob();
 
-  /**
-   * 3) Calls another function that uses the context
-   */
-  scheduleJob();
-
-  res.setHeader('content-type', 'application/json');
-  res.end(JSON.stringify({ id: job, status: 'scheduled' }));
+    res.setHeader('content-type', 'application/json');
+    res.end(JSON.stringify({ id: job, status: 'scheduled' }));
+  });
 });
 
 server.listen(8080);
