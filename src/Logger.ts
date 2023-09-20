@@ -10,6 +10,11 @@ import { toJSON } from './utils/toJSON';
 
 const ERROR_EVENT = 'type.googleapis.com/google.devtools.clouderrorreporting.v1beta1.ReportedErrorEvent';
 
+/**
+ * A function type which can format a log entry to a string
+ */
+type LogFormatter = (entry: LogEntry) => string
+
 export class Logger implements ILogger {
   /**
    * Global log level
@@ -32,6 +37,11 @@ export class Logger implements ILogger {
   protected static storage = new AsyncLocalStorage<Logger>();
 
   /**
+   * A formatter function which takes a log entry and formats it to a string
+   */
+  protected static formatter: LogFormatter = toJSON
+
+  /**
    * Sets a global log level
    */
   public static setLevel(level: Severity): void {
@@ -50,6 +60,15 @@ export class Logger implements ILogger {
    */
   public static getLabels(): Record<string, string | undefined> {
     return this.labels;
+  }
+
+  /**
+   * Sets a global formatter function to replace the default JSON.stringify based formatter.
+   * This can be useful for developers running the application locally and presenting logs in
+   * a more developer-friendly form.
+   */
+  public static setFormatter(formatter?: LogFormatter) {
+    this.formatter = formatter || toJSON
   }
 
   /**
@@ -138,7 +157,7 @@ export class Logger implements ILogger {
     }
 
     const channel = severity >= Severity.ERROR ? 'stderr' : 'stdout';
-    process[channel].write(toJSON(entry) + '\n');
+    process[channel].write(Logger.formatter(entry) + '\n');
   }
 
   public default(message: string, meta?: LogEntryMetadata): void {

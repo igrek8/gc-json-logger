@@ -149,4 +149,20 @@ describe('Logger', () => {
       );
     }
   );
+
+  it('supports a custom formatter', async () => {
+    const logger = new Logger('context');
+    const mockLogFormatter = jest.fn(() => 'mock')
+    Logger.setFormatter(mockLogFormatter)
+    Logger.runWith(logger, () => {
+      Logger.info('hello')
+      expect(mockLogFormatter).toHaveBeenCalledWith(
+        expect.objectContaining({
+          time: '1970-01-01T00:00:00.000Z',
+          severity: 'INFO',
+          message: 'hello',
+        })
+      );
+    });
+  });
 });
