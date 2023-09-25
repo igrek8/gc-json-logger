@@ -4,6 +4,7 @@ import { randomUUID } from 'crypto';
 
 import { ILogger } from './ILogger';
 import { LogEntry } from './types/LogEntry';
+import { LogFormatter } from './types/LogFormatter';
 import { LogEntryMetadata } from './types/LogEntryMetadata';
 import { Severity } from './types/Severity';
 import { toJSON } from './utils/toJSON';
@@ -32,6 +33,11 @@ export class Logger implements ILogger {
   protected static storage = new AsyncLocalStorage<Logger>();
 
   /**
+   * A formatter function which takes a log entry and formats it to a string
+   */
+  protected static formatter: LogFormatter = toJSON;
+
+  /**
    * Sets a global log level
    */
   public static setLevel(level: Severity): void {
@@ -50,6 +56,15 @@ export class Logger implements ILogger {
    */
   public static getLabels(): Record<string, string | undefined> {
     return this.labels;
+  }
+
+  /**
+   * Sets a global formatter function to replace the default JSON.stringify based formatter.
+   * This can be useful for developers running the application locally and presenting logs in
+   * a more developer-friendly form.
+   */
+  public static setFormatter(formatter: LogFormatter = toJSON) {
+    this.formatter = formatter;
   }
 
   /**
@@ -138,7 +153,7 @@ export class Logger implements ILogger {
     }
 
     const channel = severity >= Severity.ERROR ? 'stderr' : 'stdout';
-    process[channel].write(toJSON(entry) + '\n');
+    process[channel].write(Logger.formatter(entry) + '\n');
   }
 
   public default(message: string, meta?: LogEntryMetadata): void {

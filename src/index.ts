@@ -4,4 +4,5 @@ export * from './types/HttpRequest';
 export * from './types/LogEntry';
 export * from './types/LogEntryMetadata';
 export * from './types/LogEntryOperation';
+export * from './types/LogFormatter';
 export * from './types/Severity';
