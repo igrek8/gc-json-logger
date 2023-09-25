@@ -4,16 +4,12 @@ import { randomUUID } from 'crypto';
 
 import { ILogger } from './ILogger';
 import { LogEntry } from './types/LogEntry';
+import { LogFormatter } from './types/LogFormatter';
 import { LogEntryMetadata } from './types/LogEntryMetadata';
 import { Severity } from './types/Severity';
 import { toJSON } from './utils/toJSON';
 
 const ERROR_EVENT = 'type.googleapis.com/google.devtools.clouderrorreporting.v1beta1.ReportedErrorEvent';
-
-/**
- * A function type which can format a log entry to a string
- */
-type LogFormatter = (entry: LogEntry) => string
 
 export class Logger implements ILogger {
   /**
@@ -39,7 +35,7 @@ export class Logger implements ILogger {
   /**
    * A formatter function which takes a log entry and formats it to a string
    */
-  protected static formatter: LogFormatter = toJSON
+  protected static formatter: LogFormatter = toJSON;
 
   /**
    * Sets a global log level
@@ -67,8 +63,8 @@ export class Logger implements ILogger {
    * This can be useful for developers running the application locally and presenting logs in
    * a more developer-friendly form.
    */
-  public static setFormatter(formatter?: LogFormatter) {
-    this.formatter = formatter || toJSON
+  public static setFormatter(formatter: LogFormatter = toJSON) {
+    this.formatter = formatter;
   }
 
   /**
